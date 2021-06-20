@@ -13,7 +13,6 @@ function clearValue() {
   firstValue = 0;
   secondValue = 0;
   argument = [];
-  screenTxt = [];
 }
 function buttonPressed(e) {
   switch (e.target.dataset.val) {
@@ -64,14 +63,54 @@ function buttonPressed(e) {
       break;
     case "c":
       clearValue();
-      screenEle.textContent = `0`;
+      screenTxt = [];
+      screenEle.textContent = screenTxt.join("");
       break;
     case "+":
-      firstValue = argument.join("");
-      screenTxt.push(`+`);
-      screenEle.textContent = screenTxt.join("");
-      argument = [];
-      ope = "+";
+      switch (ope) {
+        case "+":
+          secondValue = argument.join("");
+          result = Number(firstValue) + Number(secondValue);
+          screenTxt = [];
+          screenTxt.push(result);
+          screenEle.textContent = screenTxt.join("");
+          clearValue();
+          firstValue = result;
+          screenTxt.push(`+`);
+          screenEle.textContent = screenTxt.join("");
+          ope = "+";
+          break;
+        case "-":
+          secondValue = argument.join("");
+          result = Number(firstValue) - Number(secondValue);
+          screenEle.textContent = `${result}`;
+          clearValue();
+          argument.push(result);
+          ope = "q";
+          break;
+        case "*":
+          secondValue = argument.join("");
+          result = Number(firstValue) * Number(secondValue);
+          screenEle.textContent = `${result}`;
+          clearValue();
+          argument.push(result);
+          ope = "q";
+          break;
+        case "/":
+          secondValue = argument.join("");
+          result = Number(firstValue) / Number(secondValue);
+          screenEle.textContent = `${result}`;
+          clearValue();
+          argument.push(result);
+          ope = "q";
+          break;
+        default:
+          firstValue = argument.join("");
+          screenTxt.push(`+`);
+          screenEle.textContent = screenTxt.join("");
+          argument = [];
+          ope = "+";
+      }
       break;
     case "-":
       firstValue = argument.join("");
