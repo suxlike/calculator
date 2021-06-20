@@ -7,8 +7,14 @@ let screenTxt = [];
 let argument = [];
 let firstValue = 0;
 let secondValue = 0;
-let ope = "";
+let ope = "q";
 let result = 0;
+function clearValue() {
+  firstValue = 0;
+  secondValue = 0;
+  argument = [];
+  screenTxt = [];
+}
 function buttonPressed(e) {
   switch (e.target.dataset.val) {
     case "1":
@@ -57,10 +63,7 @@ function buttonPressed(e) {
       screenEle.textContent = screenTxt.join("");
       break;
     case "c":
-      firstValue = 0;
-      secondValue = 0;
-      argument = [];
-      screenTxt = [];
+      clearValue();
       screenEle.textContent = `0`;
       break;
     case "+":
@@ -76,6 +79,7 @@ function buttonPressed(e) {
       screenEle.textContent = screenTxt.join("");
       argument = [];
       ope = "-";
+
       break;
     case "*":
       firstValue = argument.join("");
@@ -97,30 +101,30 @@ function buttonPressed(e) {
         case "+":
           result = Number(firstValue) + Number(secondValue);
           screenEle.textContent = `${result}`;
-          firstValue = 0;
-          secondValue = 0;
-          argument = [];
+          clearValue();
+          argument.push(result);
+          ope = "q";
           break;
         case "-":
           result = Number(firstValue) - Number(secondValue);
           screenEle.textContent = `${result}`;
-          firstValue = 0;
-          secondValue = 0;
-          argument = [];
+          clearValue();
+          argument.push(result);
+          ope = "q";
           break;
         case "*":
           result = Number(firstValue) * Number(secondValue);
           screenEle.textContent = `${result}`;
-          firstValue = 0;
-          secondValue = 0;
-          argument = [];
+          clearValue();
+          argument.push(result);
+          ope = "q";
           break;
         case "/":
           result = Number(firstValue) / Number(secondValue);
           screenEle.textContent = `${result}`;
-          firstValue = 0;
-          secondValue = 0;
-          argument = [];
+          clearValue();
+          argument.push(result);
+          ope = "q";
           break;
       }
 
