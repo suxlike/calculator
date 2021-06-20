@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color: rgb(18, 34, 18);
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -18,8 +19,8 @@ body {
 .calc {
   background-color: black;
   display: grid;
-  grid-template-columns: repeat(4, 80px);
-  grid-template-rows: repeat(7, 80px);
+  grid-template-columns: repeat(4, 72px);
+  grid-template-rows: repeat(7, 72px);
   grid-gap: 6px;
   border-width: 6px;
   border-color: black;
