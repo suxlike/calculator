@@ -2,6 +2,23 @@
 for (let i = 1; i <= 17; i++) {
   document.querySelector(`.a${i}`).addEventListener("click", buttonPressed);
 }
+let opeBttns = document.querySelectorAll(".a2,.a3,.a4,.a8");
+let div = document.querySelector(".a2");
+let mul = document.querySelector(".a3");
+let sub = document.querySelector(".a4");
+let plu = document.querySelector(".a8");
+function disableButtons() {
+  plu.disabled = true;
+  sub.disabled = true;
+  mul.disabled = true;
+  div.disabled = true;
+}
+function unableButtons() {
+  plu.disabled = false;
+  sub.disabled = false;
+  mul.disabled = false;
+  div.disabled = false;
+}
 let screenEle = document.querySelector(".screen");
 let screenTxt = [];
 let argument = [];
@@ -61,58 +78,33 @@ function buttonPressed(e) {
       screenTxt.push(9);
       screenEle.textContent = screenTxt.join("");
       break;
+    case "0":
+      argument.push(0);
+      screenTxt.push(0);
+      screenEle.textContent = screenTxt.join("");
+      break;
+    case "dot":
+      argument.push(`.`);
+      screenTxt.push(`.`);
+      screenEle.textContent = screenTxt.join("");
+      break;
     case "c":
       clearValue();
+      unableButtons();
       screenTxt = [];
       screenEle.textContent = screenTxt.join("");
       break;
     case "+":
-      switch (ope) {
-        case "+":
-          secondValue = argument.join("");
-          result = Number(firstValue) + Number(secondValue);
-          screenTxt = [];
-          screenTxt.push(result);
-          screenEle.textContent = screenTxt.join("");
-          clearValue();
-          firstValue = result;
-          screenTxt.push(`+`);
-          screenEle.textContent = screenTxt.join("");
-          ope = "+";
-          break;
-        case "-":
-          secondValue = argument.join("");
-          result = Number(firstValue) - Number(secondValue);
-          screenEle.textContent = `${result}`;
-          clearValue();
-          argument.push(result);
-          ope = "q";
-          break;
-        case "*":
-          secondValue = argument.join("");
-          result = Number(firstValue) * Number(secondValue);
-          screenEle.textContent = `${result}`;
-          clearValue();
-          argument.push(result);
-          ope = "q";
-          break;
-        case "/":
-          secondValue = argument.join("");
-          result = Number(firstValue) / Number(secondValue);
-          screenEle.textContent = `${result}`;
-          clearValue();
-          argument.push(result);
-          ope = "q";
-          break;
-        default:
-          firstValue = argument.join("");
-          screenTxt.push(`+`);
-          screenEle.textContent = screenTxt.join("");
-          argument = [];
-          ope = "+";
-      }
+      disableButtons();
+      firstValue = argument.join("");
+      screenTxt.push(`+`);
+      screenEle.textContent = screenTxt.join("");
+      argument = [];
+      ope = "+";
       break;
     case "-":
+      disableButtons();
+
       firstValue = argument.join("");
       screenTxt.push(`-`);
       screenEle.textContent = screenTxt.join("");
@@ -121,6 +113,7 @@ function buttonPressed(e) {
 
       break;
     case "*":
+      disableButtons();
       firstValue = argument.join("");
       screenTxt.push(`*`);
       screenEle.textContent = screenTxt.join("");
@@ -128,6 +121,7 @@ function buttonPressed(e) {
       ope = "*";
       break;
     case "/":
+      disableButtons();
       firstValue = argument.join("");
       screenTxt.push("/");
       screenEle.textContent = screenTxt.join("");
@@ -135,6 +129,7 @@ function buttonPressed(e) {
       ope = "/";
       break;
     case "entr":
+      unableButtons();
       secondValue = argument.join("");
       switch (ope) {
         case "+":
@@ -142,31 +137,31 @@ function buttonPressed(e) {
           screenEle.textContent = `${result}`;
           clearValue();
           argument.push(result);
-          ope = "q";
+          ope = "e";
           break;
         case "-":
           result = Number(firstValue) - Number(secondValue);
           screenEle.textContent = `${result}`;
           clearValue();
           argument.push(result);
-          ope = "q";
+          ope = "e";
           break;
         case "*":
           result = Number(firstValue) * Number(secondValue);
           screenEle.textContent = `${result}`;
           clearValue();
           argument.push(result);
-          ope = "q";
+          ope = "e";
           break;
         case "/":
           result = Number(firstValue) / Number(secondValue);
           screenEle.textContent = `${result}`;
           clearValue();
           argument.push(result);
-          ope = "q";
+          ope = "e";
           break;
       }
-
+      screenTxt = [];
       break;
   }
 }
