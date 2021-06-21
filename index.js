@@ -34,53 +34,17 @@ function clearValue() {
 function buttonPressed(e) {
   switch (e.target.dataset.val) {
     case "1":
-      argument.push(1);
-      screenTxt.push(1);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "2":
-      argument.push(2);
-      screenTxt.push(2);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "3":
-      argument.push(3);
-      screenTxt.push(3);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "4":
-      argument.push(4);
-      screenTxt.push(`4`);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "5":
-      argument.push(5);
-      screenTxt.push(5);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "6":
-      argument.push(6);
-      screenTxt.push(6);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "7":
-      argument.push(7);
-      screenTxt.push(7);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "8":
-      argument.push(8);
-      screenTxt.push(8);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "9":
-      argument.push(9);
-      screenTxt.push(9);
-      screenEle.textContent = screenTxt.join("");
-      break;
     case "0":
-      argument.push(0);
-      screenTxt.push(0);
+      argument.push(Number(e.target.dataset.val));
+      screenTxt.push(Number(e.target.dataset.val));
       screenEle.textContent = screenTxt.join("");
       break;
     case "dot":
@@ -95,38 +59,15 @@ function buttonPressed(e) {
       screenEle.textContent = screenTxt.join("");
       break;
     case "+":
-      disableButtons();
-      firstValue = argument.join("");
-      screenTxt.push(`+`);
-      screenEle.textContent = screenTxt.join("");
-      argument = [];
-      ope = "+";
-      break;
     case "-":
-      disableButtons();
-
-      firstValue = argument.join("");
-      screenTxt.push(`-`);
-      screenEle.textContent = screenTxt.join("");
-      argument = [];
-      ope = "-";
-
-      break;
     case "*":
-      disableButtons();
-      firstValue = argument.join("");
-      screenTxt.push(`*`);
-      screenEle.textContent = screenTxt.join("");
-      argument = [];
-      ope = "*";
-      break;
     case "/":
       disableButtons();
       firstValue = argument.join("");
-      screenTxt.push("/");
+      screenTxt.push(e.target.dataset.val);
       screenEle.textContent = screenTxt.join("");
       argument = [];
-      ope = "/";
+      ope = e.target.dataset.val;
       break;
     case "entr":
       unableButtons();
