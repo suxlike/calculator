@@ -1,3 +1,3 @@
 # calculator
 
-https://suxlike.github.io/calculator/
+https://utoker.github.io/calculator/
